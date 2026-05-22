@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title desc">
+  <title id="title">Thinking circle</title>
+  <desc id="desc">Two animated rings based on the Whagons assistant loading widget.</desc>
+  <style>
+    .ring {
+      fill: none;
+      stroke: #d2320c;
+      stroke-width: 10;
+      stroke-linecap: round;
+      vector-effect: non-scaling-stroke;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .ring-a {
+      animation: ring-a 0.9s linear infinite;
+    }
+
+    .ring-b {
+      animation: ring-b 0.9s linear infinite;
+    }
+
+    @keyframes ring-a {
+      0% { transform: rotate(0deg) scaleX(1); }
+      50% { transform: rotate(45deg) scaleX(0); }
+      100% { transform: rotate(90deg) scaleX(1); }
+    }
+
+    @keyframes ring-b {
+      0% { transform: rotate(90deg) scaleX(1); }
+      50% { transform: rotate(135deg) scaleX(0); }
+      100% { transform: rotate(180deg) scaleX(1); }
+    }
+  </style>
+  <rect width="400" height="400" rx="92" fill="#0f1117"/>
+  <g transform="translate(200 200)">
+    <circle class="ring ring-a" r="120"/>
+    <circle class="ring ring-b" r="120"/>
+  </g>
+</svg>
