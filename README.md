@@ -9,8 +9,7 @@
 ## Working On
 
 <p>
-  Head down at
-  <img src="https://whagons.com/favicon.svg" alt="Whagons" width="18" />
+  <img src="https://whagons.com/favicon.svg" alt="" width="18" />
   <a href="https://whagons.com/en">Whagons</a>
 </p>
 
@@ -28,7 +27,6 @@ Projects I care about most right now:
 ## Notes
 
 - Why would you think I like Golang?
-- My job consists of getting mad at a terminal-based agent while I tell it, in broken English, to do stuff.
 
 ---
 
