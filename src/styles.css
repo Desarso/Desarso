@@ -261,6 +261,7 @@ img { max-width: 100%; }
   transform: translateY(-1px);
 }
 .status-live::before,
+.status-in-production::before,
 .status-in-use::before { background: var(--live); }
 .status-beta::before,
 .status-open-source::before { background: var(--accent); }
