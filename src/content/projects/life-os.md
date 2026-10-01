@@ -25,9 +25,14 @@ Every source lands as rows in a single `events` table through one `POST /ingest`
 - **Desktop:** a Hyprland window watcher plus idle detection. On the Mac, an ActivityWatch forwarder.
 - **Phone:** a Kotlin sensor inside the Coach app that reports app usage and unlocks, location visits, Health Connect data and what's playing.
 - **Browser:** a Manifest V3 extension that reports the focused tab, video playback and whether I'm on a call.
-- **Everything else:** a wearable, finance feeds, a sales CRM, coding-agent sessions, and the chat itself.
+- **Body:** WHOOP sleep and recovery, plus everything [LiftLedger](/projects/liftledger) knows: calorie logs, smart-scale weigh-ins and workouts.
+- **Everything else:** finance feeds, a sales CRM, coding-agent sessions, and the chat itself.
 
 Collectors buffer locally in SQLite and push with a cursor. A unique key on `(device, local_id)` plus `ON CONFLICT DO NOTHING` means any collector can resend freely after being offline, and events the server generates get a deterministic 53-bit ID hashed from their source record. Nothing interpreted is ever stored.
+
+### LiftLedger and the body data
+
+Life OS isn't only screens and apps. My workout logger, [LiftLedger](/projects/liftledger), feeds it too: the calories I log there, the weigh-ins my Bluetooth smart scale syncs to LiftLedger, body fat, and workouts. Together with WHOOP's sleep and recovery, the coach can see what I ate, what I weigh and how I slept in the same place it sees how I spent my day.
 
 ### Turning events into a timeline
 

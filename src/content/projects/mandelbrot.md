@@ -7,6 +7,9 @@ year: 2024–2026
 status: Live
 stack: [TypeScript, WebGPU, WGSL, WebGL2, SolidJS, Vite]
 source: https://github.com/Desarso/mandelbrot-webgpu
+live:
+  label: Try it live
+  href: https://mandelbrot.gabrielmalek.com
 cover: /projects/mandelbrot/cover.webp
 coverAlt: Seahorse Valley in the Mandelbrot set
 order: 10

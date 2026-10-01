@@ -7,6 +7,9 @@ year: 2025–2026
 status: Open source
 stack: [Go, WebSockets, SSE, GORM, Postgres, SQLite]
 source: https://github.com/Desarso/godantic
+live:
+  label: Read the docs
+  href: https://desarso.github.io/godantic/
 cover: /projects/godantic/cover.webp
 coverAlt: Diagram of a Godantic agent session between a browser and model providers
 order: 8

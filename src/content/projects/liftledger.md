@@ -55,6 +55,10 @@ Syncing history has two subtle rules. Each set is written exactly once: the sess
 
 The scale is a cheap Bluetooth body-composition scale. A Python listener on a home server picks up each weigh-in, queues it on disk and retries until the API accepts it. The API checks a separate ingest token with a constant-time compare, drops duplicate retries (same ID, or same weight within 60 seconds), rejects readings that are in the future or physically absurd, and holds readings unclaimed until a user taps **Link scale** in the app. Readings taken before linking get picked up too.
 
+### Feeding Life OS
+
+LiftLedger is also one of the main sources for [Life OS](/projects/life-os), my personal operating system. The coach there sees my calorie logs, the smart scale's weigh-ins and my workouts next to sleep and recovery data, so its advice about training and food is based on what actually happened.
+
 ### Health Connect without double counting
 
 Ticking a meal writes it to Android Health Connect. Each serving gets a stable record ID per day, item and serving, and the sync makes Health Connect match the ticks exactly: insert what is new, delete what was unticked. Calls go through a serialized promise queue so fast taps can't race each other. The meal plan's macros, costs and grocery list are all computed from one ingredient table, so they always agree.

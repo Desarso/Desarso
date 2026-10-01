@@ -165,24 +165,6 @@ export const covers = [
 <span style="color:#a8a59b">desktop   upload  ed25519</span></pre></div>`,
   },
   {
-    slug: 'hey-dax',
-    kicker: 'Experiment · Voice',
-    title: 'Hey Dax',
-    sub: 'A custom wake word that runs in the browser.',
-    stage: () =>
-      `<div class="dia" style="inset:0">
-        ${wires([
-          ['M800 196 V 262'],
-          ['M800 330 V 396', 'ac'],
-          ['M800 464 V 530'],
-        ])}
-        ${box(800, 140, '"hey dax"', 'ONNX · in the browser')}
-        ${box(800, 270, 'Silero VAD', 'utterances as PCM')}
-        ${box(800, 400, 'WebSocket', 'merge or barge in', 'ac')}
-        ${box(800, 536, 'denoise → STT → LLM → TTS', 'streamed back as audio', 'dark')}
-      </div>`,
-  },
-  {
     slug: 'autojob',
     kicker: 'Personal tool · Web + extension',
     title: 'AutoJob',
