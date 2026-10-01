@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import projectContent from './build/project-content.mjs'
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [projectContent(), react()],
+  build: { target: 'es2022' },
 })
