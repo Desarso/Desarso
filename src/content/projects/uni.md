@@ -10,7 +10,7 @@ cover: /projects/uni/cover.webp
 coverAlt: Uni lesson with an interactive Bayes plot and a phone showing an icon array
 order: 3
 links:
-  - label: uni.gabrielmalek.com
+  - label: uni.gabrielmalek.com (sign-in only)
     href: https://uni.gabrielmalek.com
 endTitle: One learner, on purpose
 endText: Uni is live behind my own login, so visitors only see the sign-in screen. It has exactly one learner and no plans for more. The repo is private for now.

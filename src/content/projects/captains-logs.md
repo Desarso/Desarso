@@ -10,11 +10,11 @@ cover: /projects/captains-logs/cover.webp
 coverAlt: Captain's Logs library and recording screens
 order: 5
 endTitle: Recorded daily, never shown
-endText: Captain's Logs runs on my own server and is in daily use. The content is private by design, so everything on this page uses test patterns and placeholder entries. The repos are private.
+endText: Captain's Logs runs on my own server and is in daily use. The content is private by design, so the logs on this page are sample entries made from public-domain cat videos. The repos are private.
 ---
 A video journal only works if recording is never the thing that fails. If the upload can drop a log, or the app needs a good connection, I stop using it. Captain's Logs is built around that rule. Every few seconds of video is saved on the device before anything touches the network. Uploads drain in the background and retry with backoff. The server repairs whatever the browser produced, encodes it for streaming, transcribes it, and files it into my self-hosted [Immich](https://immich.app) library, where it sits next to my photos without cluttering the main timeline.
 
-![Library](/projects/captains-logs/library-mobile.webp#phone) ![Recording](/projects/captains-logs/recording-active-mobile.webp#phone) ![Upload queue while offline](/projects/captains-logs/uploads-retry-mobile.webp#phone "The library, a recording in progress, and the upload queue holding a fresh log while the server is unreachable. Test patterns and placeholder entries only.")
+![Library](/projects/captains-logs/library-mobile.webp#phone) ![Recording](/projects/captains-logs/recording-active-mobile.webp#phone) ![Upload queue while offline](/projects/captains-logs/uploads-retry-mobile.webp#phone "The library, a recording in progress, and the upload queue holding a fresh log while the server is unreachable. The sample logs are public-domain and CC0 cat videos from Wikimedia Commons.")
 
 ## The pieces
 

@@ -372,6 +372,7 @@ img { max-width: 100%; }
 .art-meta dd { display: flex; align-items: baseline; font-size: 0.9375rem; color: var(--ink); overflow-wrap: anywhere; }
 .art-meta dd a { text-decoration: none; }
 .art-meta dd a:hover { color: var(--accent); }
+.art-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 26px; }
 .art-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; }
 
 /* ── Article body ─────────────────────────────────────── */

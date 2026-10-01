@@ -7,6 +7,9 @@ year: 2026
 status: Live
 stack: [Go, Ed25519, Docker]
 source: https://github.com/Desarso/pageup
+live:
+  label: Open pages.gabrielmalek.com
+  href: https://pages.gabrielmalek.com
 cover: /projects/pageup/cover.webp
 coverAlt: Terminal running pageup report.html and printing a URL
 order: 9

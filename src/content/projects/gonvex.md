@@ -7,6 +7,9 @@ year: 2026
 status: Beta
 stack: [Rust, TypeScript, V8, Postgres, React, React Native, WebSockets]
 source: https://github.com/Whagons-International/gonvex
+live:
+  label: Read the docs
+  href: https://whagons-international.github.io/gonvex/
 cover: /projects/gonvex/cover.webp
 coverAlt: Diagram of a React hook talking to the Gonvex runtime over a WebSocket, with Postgres underneath
 featured: true

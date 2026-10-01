@@ -6,6 +6,9 @@ category: Products
 year: 2026
 status: Live
 stack: [React, TypeScript, Convex, Stripe Connect, Expo, React Native, Puck]
+live:
+  label: Visit lakecivic.com
+  href: https://lakecivic.com
 cover: /projects/lakecivic/cover.webp
 coverAlt: LakeCivic dashboard for a demo lake association
 order: 7

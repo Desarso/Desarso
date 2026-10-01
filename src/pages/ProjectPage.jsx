@@ -7,7 +7,7 @@ export default function ProjectPage({ project, body }) {
   const groups = useMemo(() => groupToc(toc), [toc])
   const { active, progress, pastHero } = useReadingState(toc)
   const others = projects.filter((item) => item.slug !== project.slug)
-  const primaryLink = project.links[0]
+  const primaryLink = project.live ?? project.links[0]
 
   return (
     <main className="site art">
@@ -63,6 +63,20 @@ export default function ProjectPage({ project, body }) {
                 </dd>
               </div>
             </dl>
+            {(project.live || project.source) && (
+              <div className="art-acts">
+                {project.live && (
+                  <a className="btn" href={project.live.href} target="_blank" rel="noreferrer">
+                    {project.live.label} <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+                {project.source && (
+                  <a className="tlink" href={project.source} target="_blank" rel="noreferrer">
+                    Source on GitHub <span className="arr">→</span>
+                  </a>
+                )}
+              </div>
+            )}
             <div className="art-stack" aria-label="Stack">
               {project.stack.map((item) => (
                 <span className="chip" key={item}>
