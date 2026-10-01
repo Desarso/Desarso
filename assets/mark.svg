@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title">
+  <title id="title">Gabriel Malek</title>
+  <style>
+    .ring { fill: none; stroke: #8d9bff; stroke-width: 10; stroke-linecap: round; vector-effect: non-scaling-stroke; transform-box: fill-box; transform-origin: center; }
+    .a { animation: a 2.4s linear infinite; }
+    .b { animation: b 2.4s linear infinite; }
+    @keyframes a { 0% { transform: rotate(0deg) scaleX(1); } 50% { transform: rotate(45deg) scaleX(0.35); } 100% { transform: rotate(90deg) scaleX(1); } }
+    @keyframes b { 0% { transform: rotate(90deg) scaleX(1); } 50% { transform: rotate(135deg) scaleX(0.35); } 100% { transform: rotate(180deg) scaleX(1); } }
+    @media (prefers-reduced-motion: reduce) { .a, .b { animation: none; } .a { transform: rotate(30deg) scaleX(0.45); } .b { transform: rotate(-60deg) scaleX(0.45); } }
+  </style>
+  <rect width="400" height="400" rx="92" fill="#151514"/>
+  <g transform="translate(200 200)">
+    <circle class="ring a" r="120"/>
+    <circle class="ring b" r="120"/>
+  </g>
+</svg>
