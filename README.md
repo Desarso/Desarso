@@ -21,7 +21,7 @@
 
 ## Open Source
 
-- **[Gonvex](https://github.com/Whagons-International/gonvex)**: Convex-ish, on Postgres. Started in Go, now a Rust runtime running TypeScript in bounded V8 isolates, with a local replica on web and mobile. ([write-up](https://gabrielmalek.com/projects/gonvex))
+- **[Gonvex](https://github.com/Whagons-International/gonvex)**: Convex-ish, on Postgres. The Go version runs Whagons in production; v2 is a Rust runtime running TypeScript in V8, with a local replica on web and mobile. ([write-up](https://gabrielmalek.com/projects/gonvex))
 - **[Godantic](https://github.com/Desarso/godantic)**: inspired by [Pydantic AI](https://github.com/pydantic/pydantic-ai), but Go and WebSocket-forward. ([write-up](https://gabrielmalek.com/projects/godantic))
 - **[Pageup](https://github.com/Desarso/pageup)**: local HTML to an unlisted URL in one signed request. ([write-up](https://gabrielmalek.com/projects/pageup))
 - **[Mandelbrot WebGPU](https://github.com/Desarso/mandelbrot-webgpu)**: arbitrary-precision deep zoom, computed on the GPU. [Try it](https://mandelbrot.gabrielmalek.com). ([write-up](https://gabrielmalek.com/projects/mandelbrot))

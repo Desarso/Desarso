@@ -25,7 +25,7 @@ export const covers = [
     slug: 'gonvex',
     kicker: 'Open source · Realtime backend',
     title: 'Gonvex',
-    sub: 'A Convex-style backend on Postgres. Rust runtime, TypeScript in V8.',
+    sub: 'A Convex-style backend on Postgres. Go in production, Rust v2 in V8.',
     stage: () =>
       `<div class="dia" style="inset:0">
         ${wires([

@@ -1,10 +1,10 @@
 ---
 title: Gonvex
-summary: An open source, self-hosted realtime backend in the spirit of Convex. Postgres underneath, a Rust runtime, TypeScript functions in bounded V8 isolates, and a local replica on web and mobile.
-standfirst: An open source, Convex-style realtime backend on Postgres. It started as Go functions compiled into a Go server and is now a Rust runtime that runs TypeScript in bounded V8 isolates and keeps a local replica on every client.
+summary: An open source, self-hosted realtime backend in the spirit of Convex, on Postgres. The Go version runs Whagons in production; v2 is a Rust runtime with TypeScript functions in V8 and a local replica on every client.
+standfirst: An open source, Convex-style realtime backend on Postgres. The Go version, with backend functions compiled into a Go server, runs Whagons in production. The next generation is a Rust runtime that runs TypeScript in bounded V8 isolates and keeps a local replica on every client.
 category: Open source
 year: 2026
-status: Beta
+status: In production
 stack: [Rust, TypeScript, V8, Postgres, React, React Native, WebSockets]
 source: https://github.com/Whagons-International/gonvex
 live:
@@ -21,12 +21,12 @@ links:
     href: https://github.com/Whagons-International/gonvex
   - label: npm
     href: https://www.npmjs.com/package/@gonvex/cli
-endTitle: Beta, and open source
-endText: Gonvex is Apache-2.0 on GitHub, with 0.5.1 on npm as the current release. The runtime, self-hosted stack, live queries, local replica, auth, multi-tenancy, scheduling and dashboard work. Migration rollouts, fleet backup and restore, and a hosted service are still on the way to 1.0.
+endTitle: In production, and open source
+endText: The Go version runs Whagons in production for paying customers. The Rust v2 is on npm as 0.5.1. Both are Apache-2.0 on GitHub. Migration rollouts, fleet backup and restore, and a hosted service are still on the way to 1.0.
 ---
 [Convex](https://docs.convex.dev/home) gets one thing very right: the backend lives next to the app, functions are typed, and queries are subscriptions. Edit a backend function and the dev deployment updates, the generated types update, and every component that reads that data rerenders when it changes. No routes and no hand-written client SDK.
 
-Gonvex keeps that loop and changes what's underneath. Data lives in Postgres, a database I already know how to run, back up, inspect and query with SQL. The whole platform is self-hostable, and multi-project and multi-tenant support are in the open source version, not held back for a hosted product. This write-up covers what Gonvex is now, and how it got there, because it has already been rebuilt once.
+Gonvex keeps that loop and changes what's underneath. Data lives in Postgres, a database I already know how to run, back up, inspect and query with SQL. The whole platform is self-hostable, and multi-project and multi-tenant support are in the open source version, not held back for a hosted product. It runs Whagons in production today. This write-up covers what Gonvex is, and how it got here, because it has already been rebuilt once.
 
 ```tsx
 import { api } from "./gonvex/_generated/api";
@@ -45,9 +45,9 @@ A Gonvex app keeps its backend in a `gonvex/` folder beside the frontend. `gonve
 
 On the server, a new module version is activated as a generation swap: calls already running finish on the old generation, new calls use the new one, and connected clients don't reconnect. That is what makes "edit a backend file and keep clicking around the app" feel the way it does in Convex.
 
-## Version one: Go all the way down
+## Version one: Go all the way down, in production
 
-The first Gonvex was built around a bet that backend functions should be compiled Go: fast, typed, and checked by a compiler that gives an LLM-assisted workflow immediate feedback. Functions and schema were written in Go, and the CLI uploaded the source to the runtime, which compiled it with `go build -buildmode=plugin` and loaded it into the server. Compiled plugins were cached on disk, keyed by a hash of the source and of the running server binary, because loading a plugin built for a different binary can poison the process. Since Go can't unload a plugin, a supervisor brought up a fresh worker on an inherited socket and drained the old one's WebSockets. The new worker had to reload every project before it reported healthy.
+The first Gonvex, which is what runs Whagons today, was built around a bet that backend functions should be compiled Go: fast, typed, and checked by a compiler that gives an LLM-assisted workflow immediate feedback. Functions and schema were written in Go, and the CLI uploaded the source to the runtime, which compiled it with `go build -buildmode=plugin` and loaded it into the server. Compiled plugins were cached on disk, keyed by a hash of the source and of the running server binary, because loading a plugin built for a different binary can poison the process. Since Go can't unload a plugin, a supervisor brought up a fresh worker on an inherited socket and drained the old one's WebSockets. The new worker had to reload every project before it reported healthy.
 
 Realtime in v1 came from Postgres triggers and `LISTEN/NOTIFY`. Statement-level triggers reported which rows and columns changed. Functions declared what they read (tables, columns, filters, sort order) and what they wrote. A query only reran when a change actually touched something it depended on; an update to a column the query never looked at was ignored. Identical subscriptions shared one runner, unchanged results were suppressed, and large keyed lists went out as patches instead of full payloads.
 
@@ -55,14 +55,14 @@ That version got fast. The release notes for 0.1.28 record **182 ms p95 time-to-
 
 ### What v1 taught
 
-Two problems were structural:
+v1 works, and it carries real traffic. Two of its limits were structural, though, and they shaped v2:
 
 - **Isolation.** A Go plugin runs inside the server process with everything the server can reach. The project's own commit history says it plainly: the plugin process held credentials for every tenant database. A sandbox for agent-written Go was described as "a mitigation, not real isolation".
 - **Precise invalidation for arbitrary SQL is hard.** When a function didn't declare what it read, the runtime had to guess the tables, and a wrong guess meant a subscription that silently missed updates.
 
 ## Version two: Rust host, TypeScript modules
 
-Gonvex 0.5 moved the server to Rust and the application code to TypeScript. The runtime is about 45,000 lines of Rust on axum and sqlx. It owns HTTP and WebSockets, auth, tenant routing, Postgres transactions, the change feed, live queries, scheduling and storage. The Go server was retired; the production image runs no Go at all.
+Gonvex 0.5 moves the server to Rust and the application code to TypeScript. The runtime is about 45,000 lines of Rust on axum and sqlx. It owns HTTP and WebSockets, auth, tenant routing, Postgres transactions, the change feed, live queries, scheduling and storage. The v2 image has no Go in it at all.
 
 ### Functions run in bounded V8 isolates
 
@@ -129,4 +129,6 @@ Authentication can be Gonvex's own (native accounts and Google sign-in with PKCE
 
 ## Status
 
-Gonvex is in beta. `@gonvex/cli`, `@gonvex/client`, `@gonvex/react`, `create-gonvex` and `@gonvex/expo-sqlite` are on npm at 0.5.1, and the repo is Apache-2.0. It was built in the open at Whagons, and the repo's release gate runs a compatibility suite against the Whagons 5 client before a version can be promoted. Still in progress before 1.0: migration previews and staged rollouts, automated tenant backup and restore, deployment automation, enterprise identity, and a hosted control plane.
+Gonvex is in production. The Go version on `main` is the backend behind Whagons, used every day by paying customers, and every release is gated on a compatibility suite run against the Whagons 5 client before it can be promoted.
+
+The Rust and TypeScript v2 is the next generation. `@gonvex/cli`, `@gonvex/client`, `@gonvex/react`, `create-gonvex` and `@gonvex/expo-sqlite` are on npm at 0.5.1, and the repo is Apache-2.0. Still to come before 1.0: migration previews and staged rollouts, automated tenant backup and restore, deployment automation, enterprise identity, and a hosted control plane.
