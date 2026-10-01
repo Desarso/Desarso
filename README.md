@@ -19,8 +19,10 @@
 
 Projects I care about most right now:
 
-- [Gonvex](https://github.com/Desarso/gonvex): Convex-ish, but I got Go involved.
-- [Godantic](https://github.com/Desarso/godantic-): inspired by [Pydantic AI](https://github.com/pydantic/pydantic-ai), but Go, faster, and WebSocket-forward.
+- [Gonvex](https://github.com/Whagons-International/gonvex): Convex-ish, on Postgres. Started in Go, now a Rust runtime running TypeScript in V8.
+- [Godantic](https://github.com/Desarso/godantic): inspired by [Pydantic AI](https://github.com/pydantic/pydantic-ai), but Go and WebSocket-forward.
+- [Pageup](https://github.com/Desarso/pageup): local HTML to an unlisted URL in one signed request.
+- [Mandelbrot WebGPU](https://github.com/Desarso/mandelbrot-webgpu): arbitrary-precision deep zoom, computed on the GPU.
 
 ---
 
@@ -40,4 +42,4 @@ Projects I care about most right now:
 
 ## Elsewhere
 
-- More: [gabriemalek.com](https://gabriemalek.com)
+- Write-ups of these and the apps I run my day on: [gabrielmalek.com](https://gabrielmalek.com)
