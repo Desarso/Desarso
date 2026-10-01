@@ -164,11 +164,4 @@ export const covers = [
 <span style="color:#a8a59b">laptop    admin   ed25519</span>
 <span style="color:#a8a59b">desktop   upload  ed25519</span></pre></div>`,
   },
-  {
-    slug: 'autojob',
-    kicker: 'Personal tool · Web + extension',
-    title: 'AutoJob',
-    sub: 'A job-search console that tailors, tracks and autofills.',
-    stage: desktop('projects/autojob/web-jobs.webp', { x: 540, y: 150, width: 840 }),
-  },
 ]
